@@ -21,4 +21,7 @@ function onPlay(event) {
 const currentTime = localStorage.getItem('videoplayer-current-time');
 
 // если есть сохраненная текущая позиция и она отлична от 0, устанавливаем на плеере сохраненную текущую позицию
-currentTime ? player.setCurrentTime(currentTime) : null;
+//currentTime ? player.setCurrentTime(currentTime) : null;
+ if (currentTime) {
+  player.setCurrentTime(currentTime)
+ }

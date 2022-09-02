@@ -24,16 +24,17 @@ function onTextareaInput(event) {
 }
 // ф-ция проверки состояния хранилища (1) получаем значение хранилища; 2) если там есть даннные заполняем ими поля, в противном случем пустая строка
 function onFormState() {
-    const messageStoregeSave = localStorage.getItem(STORAGE_KEY);
-    let parseStorageMessage = JSON.parse(messageStoregeSave);
-    parseStorageMessage = formData;
-
+    let messageStoregeSave = localStorage.getItem(STORAGE_KEY);
+  
+  if (messageStoregeSave) {
+    messageStoregeSave = JSON.parse(messageStoregeSave);
+   // parseStorageMessage = formData;
+  }
     if (messageStoregeSave) {
-        (refs.textarea.value = parseStorageMessage.message || "");
-        (refs.input.value = parseStorageMessage.email || "");
+        (refs.textarea.value = messageStoregeSave.message || "");
+        (refs.input.value = messageStoregeSave.email || "");
     }  
 }
-
 // очищает Сабмит (1) останавливаем по умолчанию поведение; 2)очищаем форму; 3) очищаем хранилище)
 function onFormSubmit(event) {
     event.preventDefault();
